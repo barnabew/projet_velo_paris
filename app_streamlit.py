@@ -9,6 +9,10 @@
 # Elles ont était prise entre le 01/09/2024 et le 31/08/2025
 
 import kaleido
+import plotly.io as pio
+
+pio.get_chrome()
+
 
 # === 1. Importation des librairies ===
 import numpy as np
