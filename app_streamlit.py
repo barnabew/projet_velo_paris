@@ -9,9 +9,6 @@
 # Elles ont était prise entre le 01/09/2024 et le 31/08/2025
 
 import kaleido
-import plotly.io as pio
-
-pio.get_chrome()
 
 
 # === 1. Importation des librairies ===
@@ -226,7 +223,6 @@ fig3 = px.line(
 )
 
 
-fig3.write_image("moyenne_heure.png")
 
 
 # Graphique bar des moyennes journaliere selon le jour de la semaines
@@ -239,7 +235,6 @@ fig4 = px.bar(
 )
 
 
-fig4.write_image("moyenne_jour.png")
 
 
 
@@ -252,8 +247,6 @@ fig5 = px.bar(
     color="Moyenne_jour"
 )
 
-
-fig5.write_image("moyenne_mois.png")
 
 
 
