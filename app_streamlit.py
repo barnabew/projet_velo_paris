@@ -334,5 +334,10 @@ fig6 = px.scatter_mapbox(
 )
 fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
 fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
+fig6.update_layout(
+    width=800,   # largeur
+    height=800,  # hauteur identique -> carré
+    margin=dict(l=0, r=0, t=0, b=0)
+)
 
-st.plotly_chart(fig6, use_container_width=True)
+st.plotly_chart(fig6, use_container_width=False)
