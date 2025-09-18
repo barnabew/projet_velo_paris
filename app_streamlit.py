@@ -339,5 +339,6 @@ fig6.update_layout(
     height=800,  # hauteur identique -> carré
     margin=dict(l=0, r=0, t=0, b=0)
 )
-
+st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
 st.plotly_chart(fig6, use_container_width=False)
+st.markdown("</div>", unsafe_allow_html=True)
