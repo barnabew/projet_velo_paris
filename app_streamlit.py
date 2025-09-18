@@ -12,11 +12,9 @@
 # === 1. Importation des librairies ===
 import numpy as np
 import pandas as pd
-import sqlite3
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
-from fpdf import FPDF
 import plotly.graph_objects as go
 import streamlit as st
 
@@ -25,15 +23,6 @@ import streamlit as st
 
 
 df = pd.read_csv("comptage-velo-donnees-compteurs-annee.csv",sep=";")
-
-
-# Copie dans SQLite (si besoin pour tests SQL )
-conn = sqlite3.connect(":memory:")
-
-df.to_sql("Compteurs", conn, index=False, if_exists="replace")
-
-
-
 
 
 # === 3. Nettoyage des données ===
