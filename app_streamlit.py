@@ -22,7 +22,7 @@ import streamlit as st
 # === 2. Chargement des données ===
 
 
-df = pd.read_csv("comptage-velo-donnees-compteurs-annee.csv",sep=";")
+df = pd.read_csv("comptage-velo-donnees-compteurs-annee.csv",compression='zip',sep=";")
 
 
 # === 3. Nettoyage des données ===
