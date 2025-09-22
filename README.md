@@ -46,5 +46,5 @@ Objectif : identifier les tendances d’usage du vélo à Paris (pics horaires, 
 
 ## 👨‍💻 Auteur
 Projet réalisé par **Barnabé Willenbucher – Data Analyst Freelance**  
-📧 Contact : barnabe.willenbucher@gmail.com  
+📧 Contact : barnabe.willenbucher@outlook.fr 
 💼 [LinkedIn](https://www.linkedin.com/) | [Portfolio](https://monportfolio.com)  
