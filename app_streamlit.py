@@ -222,9 +222,9 @@ st.header("Moyenne des vélos par mois")
 fig5 = px.bar(
     moyenne_mois, 
     x="Mois", 
-    y="Total_velos", 
-    title="Moyenne des vélos par mois", 
-    color="Total_velos"
+    y="Moyenne_jour", 
+    title="Moyenne journalière des vélos par mois", 
+    color="Moyenne_jour"
 )
 st.plotly_chart(fig5, use_container_width=True)
 
