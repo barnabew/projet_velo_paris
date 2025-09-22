@@ -148,64 +148,32 @@ moyenne_top_site = (
 )
 
 
-# Trie par heures des moyennes journaliere
+# Moyennes par heure
 moyenne_heure = (
     (df.groupby("Heure")["Comptage horaire"].sum() / 365)
-    .reset_index()
-    .round(1)
+    .reset_index().round(1)
     .sort_values(by="Heure")
-)   
+)
 
-#Trie par jour de la semaine des moyennes journaliere
+# Moyennes par jour
 moyenne_jour = (
-    (df.groupby("Jour")["Comptage horaire"].sum() / 365 )
-    .reset_index()
-    .round(1)
-    .sort_values(by="Comptage horaire",ascending=False)
+    (df.groupby("Jour")["Comptage horaire"].sum() / 52)
+    .reset_index().round(1)
+    .sort_values(by="Comptage horaire", ascending=False)
 )
 
-
-#Trie par mois des moyennes journaliere
-
-#calcul du nombre de vélos par mois
-somme_mois = (
-    df.groupby("Mois_num")["Comptage horaire"]
-    .sum()
-    .reset_index(name="Total_velos")
-)
-
-# Assemblage du nombre de vélos par jour et du nombre de jours par mois
-moyenne_mois = somme_mois.merge(jours_par_mois,on="Mois_num")
-
-# Moyenne pour chaque mois par jours = moyenne mois / nombre de jours
+# Moyennes par mois (corrigées par nb de jours du mois)
+somme_mois = df.groupby("Mois_num")["Comptage horaire"].sum().reset_index(name="Total_velos")
+moyenne_mois = somme_mois.merge(jours_par_mois, on="Mois_num")
 moyenne_mois["Moyenne_jour"] = (moyenne_mois["Total_velos"] / moyenne_mois["Nb_jours"]).round(1)
-
-# Permet d'avoir les noms en anglais des mois
-moyenne_mois["Mois"] = (
-    moyenne_mois["Mois_num"]
-    .apply(lambda x : pd.to_datetime(str(x), format="%m").month_name())
-)
-
-
-# Transformation des noms de mois en francais
+# Traduction des mois en français
 mois_fr = {
-    "January": "Janvier",
-    "February": "Février",
-    "March": "Mars",
-    "April": "Avril",
-    "May": "Mai",
-    "June": "Juin",
-    "July": "Juillet",
-    "August": "Août",
-    "September": "Septembre",
-    "October": "Octobre",
-    "November": "Novembre",
-    "December": "Décembre"
+    "January": "Janvier","February": "Février","March": "Mars","April": "Avril",
+    "May": "Mai","June": "Juin","July": "Juillet","August": "Août",
+    "September": "Septembre","October": "Octobre","November": "Novembre","December": "Décembre"
 }
-
-moyenne_mois["Mois"]=moyenne_mois["Mois"].map(mois_fr)
-
-
+moyenne_mois["Mois"] = moyenne_mois["Mois_num"].apply(lambda x: pd.to_datetime(str(x), format="%m").month_name())
+moyenne_mois["Mois"] = moyenne_mois["Mois"].map(mois_fr)
 
 
 
