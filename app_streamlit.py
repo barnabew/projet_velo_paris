@@ -224,7 +224,7 @@ fig5 = px.bar(
     x="Mois", 
     y="Total_velos", 
     title="Moyenne des vélos par mois", 
-    color="Comptage horaire"
+    color="Total_velos"
 )
 st.plotly_chart(fig5, use_container_width=True)
 
