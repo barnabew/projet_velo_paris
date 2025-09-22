@@ -222,7 +222,7 @@ st.header("Moyenne des vélos par mois")
 fig5 = px.bar(
     moyenne_mois, 
     x="Mois", 
-    y="Comptage horaire", 
+    y="Total_velos", 
     title="Moyenne des vélos par mois", 
     color="Comptage horaire"
 )
