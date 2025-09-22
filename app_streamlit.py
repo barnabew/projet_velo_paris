@@ -332,12 +332,23 @@ fig6 = px.scatter_mapbox(
     color_continuous_scale="Viridis",
     range_color=[vmin, vmax]
 )
-fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
-fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
+# Ajustements du rendu
+fig6.update_traces(
+    marker=dict(
+        opacity=0.7,  
+        sizemode="area"
+    )
+)
+
+# Mise en page carrée et centrée
 fig6.update_layout(
-    width=800,   # largeur
-    height=800,  # hauteur identique -> carré
-    margin=dict(l=0, r=0, t=0, b=0)
+    width=700,
+    height=700,
+    title="Trafic cycliste à Paris - 17h",
+    title_x=0.5,  # centrer le titre
+    margin=dict(l=20, r=20, t=50, b=20),
+    coloraxis_colorbar=dict(title="Nombre de vélos"),
+    map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
 )
 st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
 st.plotly_chart(fig6, use_container_width=False)
