@@ -177,49 +177,6 @@ moyenne_mois["Mois"] = moyenne_mois["Mois"].map(mois_fr)
 
 
 
-
-
-# === 5. Visualisation des données ===
-
-# Graphique line des moyennes journaliere selon l'heure
-fig3 = px.line(
-    moyenne_heure, 
-    x="Heure", 
-    y="Comptage horaire", 
-    title="Moyenne des vélos par heure",  
-    markers=True
-)
-
-
-
-
-# Graphique bar des moyennes journaliere selon le jour de la semaines
-fig4 = px.bar(
-    moyenne_jour, 
-    x="Jour", 
-    y="Comptage horaire", 
-    title="Moyenne des vélos par jour", 
-    color="Comptage horaire"
-)
-
-
-
-
-
-# Graphique bar des moyennes journaliere selon les mois
-fig5 = px.bar(
-    moyenne_mois, 
-    x="Mois", 
-    y="Moyenne_jour", 
-    title="Moyenne des vélos par jour", 
-    color="Moyenne_jour"
-)
-
-
-
-
-# Carte interactive par heure
-
 # Grouper par site et heure
 int_heure = df.groupby(["Nom du site de comptage", "lat", "lon", "Heure"]).agg(
     Velos=("Comptage horaire", "sum")
@@ -229,28 +186,6 @@ int_heure = df.groupby(["Nom du site de comptage", "lat", "lon", "Heure"]).agg(
 # Récupère les valeurs min et max pour l'échelle fixe
 vmin = int_heure["Velos"].min()
 vmax = int_heure["Velos"].max()
-
-fig6 = px.scatter_mapbox(
-    int_heure,
-    lat="lat",
-    lon="lon",
-    size="Velos",
-    color="Velos",
-    animation_frame="Heure",
-    hover_name="Nom du site de comptage",
-    size_max=40,
-    zoom=12,
-    mapbox_style="open-street-map",
-    color_continuous_scale="Viridis",
-    range_color=[vmin, vmax]  # Fixe l'échelle de couleur
-)
-
-# Ajuste l'opacité pour un effet plus fondu
-fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
-
-# Optionnel : style de la légende pour être plus lisible
-fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
-
 
 
 # === Streamlit App ===
@@ -281,6 +216,21 @@ fig4 = px.bar(
 )
 st.plotly_chart(fig4, use_container_width=True)
 
+
+# --- Moyenne par mois ---
+st.header("Moyenne des vélos par mois")
+fig5 = px.bar(
+    moyenne_mois, 
+    x="Mois", 
+    y="Comptage horaire", 
+    title="Moyenne des vélos par mois", 
+    color="Comptage horaire"
+)
+st.plotly_chart(fig5, use_container_width=True)
+
+
+
+
 # --- Carte interactive par heure ---
 st.header("Carte interactive des vélos par site et heure")
 vmin = int_heure["Velos"].min()
@@ -300,23 +250,22 @@ fig6 = px.scatter_mapbox(
     color_continuous_scale="Viridis",
     range_color=[vmin, vmax]
 )
-# Ajustements du rendu
-fig6.update_traces(
-    marker=dict(
-        opacity=0.7,  
-        sizemode="area"
-    )
-)
+
+
+# Ajuste l'opacité pour un effet plus fondu
+fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
+
+# Optionnel : style de la légende pour être plus lisible
+fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
+
 
 # Mise en page carrée et centrée
 fig6.update_layout(
     width=700,
     height=700,
-    title="Trafic cycliste à Paris - 17h",
-    title_x=0.5,  # centrer le titre
     margin=dict(l=20, r=20, t=50, b=20),
     coloraxis_colorbar=dict(title="Nombre de vélos"),
-    map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
+    map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.7)  # centrage sur Paris
 )
 st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
 st.plotly_chart(fig6, use_container_width=False)
