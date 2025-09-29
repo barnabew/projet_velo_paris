@@ -229,33 +229,23 @@ st.write("Ce rapport présente une étude approfondie des flux de vélos à Pari
 titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur","Conclusion"]
 onglets = st.tabs(titres_onglets)
 
-kpis = {
-    "Trafic moyen journalier": f"{trafic_moyen} vélos",
-    "Pic du matin": "8h - 9h",
-    "Pic du soir": "17h - 19h",
-    "Jour le plus chargé": jour_max,
-    "Jour le moins chargé": jour_min,
-    "Mois le plus chargé": mois_max,
-    "Mois le moins chargé": mois_min
-}
+
 
 with onglets[0]:
-         for titre, valeur in kpis.items():
-                                    st.markdown(
-                                            f"""
-                                            <div style="
-                                                border: 2px solid #4CAF50;
-                                                border-radius: 10px;
-                                                padding: 10px;
-                                                background-color: #f9f9f9;
-                                                margin-bottom: 10px;
-                                            ">
-                                                <h4 style="color:#4CAF50; margin:0;">{titre}</h4>
-                                                <p style="font-size:18px; margin:5px 0;"><b>{valeur}</b></p>
-                                            </div>
-                                            """,
-                                            unsafe_allow_html=True
-                                        )
+         st.subheader("KPIs")
+             cols = st.columns(4)
+             kpi_items = {
+                 "Trafic moyen journalier": f"{metrics['trafic_moyen']} vélos",
+                 "Pic du matin": metrics["pic_matin"],
+                 "Pic du soir": metrics["pic_soir"],
+                 "Jour le plus chargé": metrics["jour_max"],
+                 "Jour le moins chargé": metrics["jour_min"],
+                 "Mois le plus chargé": metrics["mois_max"],
+                 "Mois le moins chargé": metrics["mois_min"]
+             }
+             for i, (title, value) in enumerate(kpi_items.items()):
+                 with cols[i % 4]:
+                     st.metric(title, value)
 
          
          st.write("- Le trafic moyen journalier ne reflète pas la réalité car les mêmes vélos ont pu être comptabilisés plusieurs fois.\n"
