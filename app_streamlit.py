@@ -1,12 +1,3 @@
-#-------------------------------------------------------------------
-#-------------------------------------------------------------------
-#----------------------   PROJET VELO PARIS   ----------------------
-#-------------------------------------------------------------------
-#-------------------------------------------------------------------
-
-# Ces données proviennent du portail d'open data de la ville de Paris
-# https://opendata.paris.fr/explore/dataset/comptage-velo-donnees-compteurs/
-# Elles ont était prise entre le 01/09/2024 et le 31/08/2025
 
 import kaleido
 
