@@ -224,6 +224,9 @@ titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","A
 onglets = st.tabs(titres_onglets)
 
 with onglets[0]:
+         st.info("Jour le plus chargé": jour_max)
+
+         
          st.write("- Le trafic moyen journalier ne reflète pas la réalité car les mêmes vélos ont pu être comptabilisés plusieurs fois.\n"
     "- Les pics d'utilisation se situent à 8h et entre 17h et 19h, correspondant aux trajets domicile-travail.\n"
     "- Le jour le plus chargé est le mardi, mais l'activité reste élevée aussi le mercredi et le jeudi.\n"
