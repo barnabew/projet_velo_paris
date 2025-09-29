@@ -224,7 +224,7 @@ titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","A
 onglets = st.tabs(titres_onglets)
 
 with onglets[0]:
-         st.info("Jour le plus chargé": jour_max)
+         st.info("Jour le plus chargé :" jour_max)
 
          
          st.write("- Le trafic moyen journalier ne reflète pas la réalité car les mêmes vélos ont pu être comptabilisés plusieurs fois.\n"
