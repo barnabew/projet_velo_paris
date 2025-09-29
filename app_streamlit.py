@@ -224,7 +224,22 @@ titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","A
 onglets = st.tabs(titres_onglets)
 
 with onglets[0]:
-         st.info("Jour le plus chargé :" jour_max)
+         for titre, valeur in kpis.items():
+                                    st.markdown(
+                                            f"""
+                                            <div style="
+                                                border: 2px solid #4CAF50;
+                                                border-radius: 10px;
+                                                padding: 10px;
+                                                background-color: #f9f9f9;
+                                                margin-bottom: 10px;
+                                            ">
+                                                <h4 style="color:#4CAF50; margin:0;">{titre}</h4>
+                                                <p style="font-size:18px; margin:5px 0;"><b>{valeur}</b></p>
+                                            </div>
+                                            """,
+                                            unsafe_allow_html=True
+                                        )
 
          
          st.write("- Le trafic moyen journalier ne reflète pas la réalité car les mêmes vélos ont pu être comptabilisés plusieurs fois.\n"
