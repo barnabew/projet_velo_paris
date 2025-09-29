@@ -317,11 +317,11 @@ with onglets[0]:
     "- Les mois de mai à septembre affichent les volumes les plus élevés, tandis que l'hiver (décembre, janvier, février) est plus calme.\n\n"
     "Ces résultats mettent en évidence les grandes tendances de l'usage du vélo à Paris et servent de base pour les analyses détaillées dans les pages suivantes."
                  )
-   if st.button("Exporter le résumé en PDF"):
-        pdf_file = generate_pdf(kpis, "https://testappvelo-3tskhjcmgulxgj47aa4rnp.streamlit.app/")
-        st.download_button("Télécharger le PDF", data=pdf_file,
-                           file_name="rapport_velo_resume.pdf",
-                           mime="application/pdf")      
+         if st.button("Exporter le résumé en PDF"):
+                 pdf_file = generate_pdf(kpis, "https://testappvelo-3tskhjcmgulxgj47aa4rnp.streamlit.app/")
+                 st.download_button("Télécharger le PDF", data=pdf_file,
+                                    file_name="rapport_velo_resume.pdf",
+                                    mime="application/pdf")      
 
 # --- Moyenne par heure ---
 with onglets[1]:
