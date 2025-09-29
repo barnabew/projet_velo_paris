@@ -223,6 +223,16 @@ st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur"]
 onglets = st.tabs(titres_onglets)
 
+kpis = {
+    "Trafic moyen journalier": f"{trafic_moyen} vélos",
+    "Pic du matin": "8h - 9h",
+    "Pic du soir": "17h - 19h",
+    "Jour le plus chargé": jour_max,
+    "Jour le moins chargé": jour_min,
+    "Mois le plus chargé": mois_max,
+    "Mois le moins chargé": mois_min
+}
+
 with onglets[0]:
          for titre, valeur in kpis.items():
                                     st.markdown(
