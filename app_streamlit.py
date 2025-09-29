@@ -211,58 +211,6 @@ trafic_moyen = int(df["Comptage horaire"].sum() / 365)
 # === Streamlit App ===
 
 
-
-def generate_pdf(kpis, url_app):
-    # Génération HTML du résumé
-    html_code = f"""
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <style>
-        body {{
-          font-family: Arial, sans-serif;
-          margin: 2cm;
-        }}
-        h1 {{ text-align: center; color: #2E86C1; }}
-        .kpi {{
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          padding: 8px;
-          margin: 5px 0;
-          background-color: #f9f9f9;
-        }}
-        .kpi-title {{
-          font-weight: bold;
-          color: #2E86C1;
-        }}
-      </style>
-    </head>
-    <body>
-      <h1>Résumé exécutif - Comptages vélos Paris</h1>
-      
-      <h2>Indicateurs clés</h2>
-      {''.join([f'<div class="kpi"><span class="kpi-title">{titre} :</span> {valeur}</div>' for titre, valeur in kpis.items()])}
-      
-      <h2>Conclusions</h2>
-      <ul>
-        <li>Les pics d’utilisation se situent à 8h–9h et 17h–19h</li>
-        <li>Le mardi est le jour le plus chargé, le dimanche le plus calme</li>
-        <li>Mai à septembre affichent les volumes les plus élevés</li>
-        <li>Le trafic est concentré dans l’hypercentre parisien</li>
-      </ul>
-      
-      <p>👉 Explorez l’analyse complète sur le dashboard : 
-         <a href="{url_app}">{url_app}</a></p>
-    </body>
-    </html>
-    """
-    
-    # Création du PDF
-    pdf_bytes = HTML(string=html_code).write_pdf()
-    return pdf_bytes
-
-
-
 st.set_page_config(page_title="Analyse Comptage Vélo Paris", layout="wide")
 
 st.title("Rapport - Analyse des Comptages de Vélos à Paris")
@@ -317,11 +265,7 @@ with onglets[0]:
     "- Les mois de mai à septembre affichent les volumes les plus élevés, tandis que l'hiver (décembre, janvier, février) est plus calme.\n\n"
     "Ces résultats mettent en évidence les grandes tendances de l'usage du vélo à Paris et servent de base pour les analyses détaillées dans les pages suivantes."
                  )
-         if st.button("Exporter le résumé en PDF"):
-                 pdf_file = generate_pdf(kpis, "https://testappvelo-3tskhjcmgulxgj47aa4rnp.streamlit.app/")
-                 st.download_button("Télécharger le PDF", data=pdf_file,
-                                    file_name="rapport_velo_resume.pdf",
-                                    mime="application/pdf")      
+  
 
 # --- Moyenne par heure ---
 with onglets[1]:
