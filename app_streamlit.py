@@ -128,24 +128,6 @@ print(df.isnull().sum())
 # Calcul de la moyenne journaliere de vélo
 moyenne_jours = round(df["Comptage horaire"].sum() / 365,1)
 
-# On trouve les 10 sites ayant la plus petite moyennes journaliere
-moyenne_bot_site = (
-    (df.groupby("Nom du site de comptage")["Comptage horaire"].sum() / 365)
-    .reset_index()
-    .round(1)
-    .sort_values(by="Comptage horaire",ascending=True)
-    .head(10)
-)
-
-# On trouve les 10 sites ayant la plus grande moyennes journaliere
-moyenne_top_site = (
-    (df.groupby("Nom du site de comptage")["Comptage horaire"].sum() / 365)
-    .reset_index()
-    .round(1)
-    .sort_values(by="Comptage horaire",ascending=False)
-    .head(10)
-)
-
 
 # Moyennes par heure
 moyenne_heure = (
@@ -158,7 +140,6 @@ moyenne_heure = (
 moyenne_jour = (
     (df.groupby("Jour")["Comptage horaire"].sum() / 52)
     .reset_index().round(1)
-    .sort_values(by="Comptage horaire", ascending=False)
 )
 
 # Moyennes par mois (corrigées par nb de jours du mois)
