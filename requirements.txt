@@ -6,4 +6,4 @@ matplotlib
 seaborn
 kaleido
 weasyprint
-html
+HTML
