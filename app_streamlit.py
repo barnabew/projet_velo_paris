@@ -299,12 +299,16 @@ with onglets[3]:
 
 # --- Carte interactive par heure ---
 with onglets[4]:
+
+         int_17h = int_heure[int_heure["Heure"] == 17]
+
+         
          st.header("Carte interactive des vélos par site et heure")
-         vmin = int_heure["Velos"].min()
-         vmax = int_heure["Velos"].max()
+         vmin = int_17h["Velos"].min()
+         vmax = int_17h["Velos"].max()
          
          fig = px.scatter_map(
-             int_heure,
+             int_17h,
              lat="lat",
              lon="lon",
              size="Velos",
