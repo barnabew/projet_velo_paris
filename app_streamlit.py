@@ -33,7 +33,7 @@ df = df[["Date et heure de comptage",
 df=df.dropna()
 
 
-#enlever les capteurs defecteux
+#On enleve les capteurs defecteux
 defecteux = (
     df.groupby("Identifiant du site de comptage")
     .agg(Moyenne_velo =("Comptage horaire","mean"))
