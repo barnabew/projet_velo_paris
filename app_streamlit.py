@@ -19,7 +19,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-
+from weasyprint import HTML
 
 # === 2. Chargement des données ===
 
