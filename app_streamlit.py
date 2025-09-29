@@ -303,36 +303,37 @@ with onglets[4]:
          vmin = int_heure["Velos"].min()
          vmax = int_heure["Velos"].max()
          
-         fig6 = px.scatter_mapbox(
+         fig = px.scatter_map(
              int_heure,
              lat="lat",
              lon="lon",
              size="Velos",
              color="Velos",
-             animation_frame="Heure",
              hover_name="Nom du site de comptage",
-             size_max=40,
-             zoom=12,
-             mapbox_style="open-street-map",
+             size_max=35,
              color_continuous_scale="Viridis",
-             range_color=[vmin, vmax]
+             range_color=[vmin, vmax],
+             zoom=12,
+             map_style="carto-positron"  
          )
          
-         
-         # Ajuste l'opacité pour un effet plus fondu
-         fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
-         
-         # Optionnel : style de la légende pour être plus lisible
-         fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
-         
+         # Ajustements du rendu
+         fig.update_traces(
+             marker=dict(
+                 opacity=0.7,  
+                 sizemode="area"
+             )
+         )
          
          # Mise en page carrée et centrée
-         fig6.update_layout(
+         fig.update_layout(
              width=700,
              height=700,
+             title="Trafic cycliste à Paris - 17h",
+             title_x=0.5,  # centrer le titre
              margin=dict(l=20, r=20, t=50, b=20),
              coloraxis_colorbar=dict(title="Nombre de vélos"),
-             map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.7)  # centrage sur Paris
+             map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
          )
          st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
          st.plotly_chart(fig6, use_container_width=False)
