@@ -234,16 +234,16 @@ onglets = st.tabs(titres_onglets)
 with onglets[0]:
          st.subheader("KPIs")
          cols = st.columns(4)
-         kpi_items = {
-                  "Trafic moyen journalier": f"{metrics['trafic_moyen']} vélos",
-                  "Pic du matin": metrics["pic_matin"],
-                  "Pic du soir": metrics["pic_soir"],
-                  "Jour le plus chargé": metrics["jour_max"],
-                  "Jour le moins chargé": metrics["jour_min"],
-                  "Mois le plus chargé": metrics["mois_max"],
-                  "Mois le moins chargé": metrics["mois_min"]
+         kpis = {
+             "Trafic moyen journalier": f"{trafic_moyen} vélos",
+             "Pic du matin": "8h - 9h",
+             "Pic du soir": "17h - 19h",
+             "Jour le plus chargé": jour_max,
+             "Jour le moins chargé": jour_min,
+             "Mois le plus chargé": mois_max,
+             "Mois le moins chargé": mois_min
          }
-         for i, (title, value) in enumerate(kpi_items.items()):
+         for i, (title, value) in enumerate(kpis.items()):
                   with cols[i % 4]:
                      st.metric(title, value)
 
