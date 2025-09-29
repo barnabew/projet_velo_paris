@@ -317,7 +317,12 @@ with onglets[3]:
          )
          st.plotly_chart(fig5, use_container_width=True)
 
-
+         st.write("Les mois de mai à septembre affichent les niveaux de trafic les plus élevés, en lien avec des conditions météorologiques favorables et une luminosité accrue. "
+             "À l'inverse, l'hiver (décembre, janvier, février) présente une baisse significative de l'activité cycliste.\n\n"
+             "Il convient de rappeler que ces observations portent sur une seule année de données. "
+             "Ainsi, un mois exceptionnellement ensoleillé, comme un juin particulièrement beau, pourrait accentuer le trafic observé, tandis qu'un mois pluvieux pourrait le réduire. "
+             "Ces variations doivent être prises en compte pour interpréter correctement les tendances saisonnières."
+         )
 
 
 # --- Carte interactive par heure ---
@@ -360,3 +365,16 @@ with onglets[4]:
          st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
          st.plotly_chart(fig6, use_container_width=False)
          st.markdown("</div>", unsafe_allow_html=True)
+
+         st.write("L'analyse de la carte à 17h met en évidence une forte concentration du trafic cycliste "
+             "dans l'hypercentre parisien, avec des volumes particulièrement élevés sur les axes centraux "
+             "et le long de la Seine. On observe également des flux notables vers l'ouest (Boulogne, Neuilly, "
+             "Issy-les-Moulineaux) et vers le sud (Montrouge, Ivry), traduisant l'importance des corridors "
+             "d'entrée et de sortie de la capitale.\n\n"
+             "A mesure que l'on s'éloigne du centre, l'intensité décroît, mais les points de comptage "
+             "témoignent d'une pratique cycliste significative en périphérie immédiate. "
+             "Le choix de 17h illustre clairement l'heure de pointe du soir, marquée par des flux soutenus "
+             "liés aux déplacements domicile-travail. Cette répartition souligne le rôle central des "
+             "infrastructures cyclables parisiennes et l'importance des connexions avec la petite couronne "
+             "pour accompagner la croissance de l'usage du vélo."
+         )
