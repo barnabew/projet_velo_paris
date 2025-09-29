@@ -188,6 +188,26 @@ vmin = int_heure["Velos"].min()
 vmax = int_heure["Velos"].max()
 
 
+
+# Pic du matin et du soir
+pic_matin = moyenne_heure.idxmax() if moyenne_heure.index[0] < 12 else "Non défini"
+pic_soir = moyenne_heure.idxmax() if moyenne_heure.index[0] >= 12 else "Non défini"
+
+# Jours avec le plus et le moins de trafic
+moyenne_annee = df.groupby("Jour")["Comptage horaire"].sum() / 365
+jour_max = moyenne_annee.idxmax()
+jour_min = moyenne_annee.idxmin()
+
+# Mois avec le plus et le moins de trafic
+# Assurez-vous que 'Moyenne_jour' dans moyenne_mois est déjà calculée
+mois_max = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmax(), "Mois"]
+mois_min = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmin(), "Mois"]
+
+# Trafic moyen journalier
+trafic_moyen = int(df["Comptage horaire"].sum() / 365)
+
+
+
 # === Streamlit App ===
 st.set_page_config(page_title="Analyse Comptage Vélo Paris", layout="wide")
 
@@ -253,41 +273,42 @@ with onglets[3]:
 
 
 # --- Carte interactive par heure ---
-st.header("Carte interactive des vélos par site et heure")
-vmin = int_heure["Velos"].min()
-vmax = int_heure["Velos"].max()
-
-fig6 = px.scatter_mapbox(
-    int_heure,
-    lat="lat",
-    lon="lon",
-    size="Velos",
-    color="Velos",
-    animation_frame="Heure",
-    hover_name="Nom du site de comptage",
-    size_max=40,
-    zoom=12,
-    mapbox_style="open-street-map",
-    color_continuous_scale="Viridis",
-    range_color=[vmin, vmax]
-)
-
-
-# Ajuste l'opacité pour un effet plus fondu
-fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
-
-# Optionnel : style de la légende pour être plus lisible
-fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
-
-
-# Mise en page carrée et centrée
-fig6.update_layout(
-    width=700,
-    height=700,
-    margin=dict(l=20, r=20, t=50, b=20),
-    coloraxis_colorbar=dict(title="Nombre de vélos"),
-    map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.7)  # centrage sur Paris
-)
-st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
-st.plotly_chart(fig6, use_container_width=False)
-st.markdown("</div>", unsafe_allow_html=True)
+with onglets[4]:
+         st.header("Carte interactive des vélos par site et heure")
+         vmin = int_heure["Velos"].min()
+         vmax = int_heure["Velos"].max()
+         
+         fig6 = px.scatter_mapbox(
+             int_heure,
+             lat="lat",
+             lon="lon",
+             size="Velos",
+             color="Velos",
+             animation_frame="Heure",
+             hover_name="Nom du site de comptage",
+             size_max=40,
+             zoom=12,
+             mapbox_style="open-street-map",
+             color_continuous_scale="Viridis",
+             range_color=[vmin, vmax]
+         )
+         
+         
+         # Ajuste l'opacité pour un effet plus fondu
+         fig6.update_traces(marker=dict(opacity=0.6, sizemode='area', sizeref=2.*max(int_heure['Velos'])/(40.**2)))
+         
+         # Optionnel : style de la légende pour être plus lisible
+         fig6.update_layout(coloraxis_colorbar=dict(title="Nombre de vélos"))
+         
+         
+         # Mise en page carrée et centrée
+         fig6.update_layout(
+             width=700,
+             height=700,
+             margin=dict(l=20, r=20, t=50, b=20),
+             coloraxis_colorbar=dict(title="Nombre de vélos"),
+             map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.7)  # centrage sur Paris
+         )
+         st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
+         st.plotly_chart(fig6, use_container_width=False)
+         st.markdown("</div>", unsafe_allow_html=True)
