@@ -336,7 +336,7 @@ with onglets[4]:
              map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
          )
          st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
-         st.plotly_chart(fig6, use_container_width=False)
+         st.plotly_chart(fig, use_container_width=False)
          st.markdown("</div>", unsafe_allow_html=True)
 
          st.write("L'analyse de la carte à 17h met en évidence une forte concentration du trafic cycliste "
