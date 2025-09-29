@@ -216,7 +216,12 @@ st.title("Rapport - Analyse des Comptages de Vélos à Paris")
 st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
 st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 
-
+st.write("Ce rapport présente une étude approfondie des flux de vélos à Paris.\n\n"
+    "À partir des données issues des compteurs automatiques, nous mettons en évidence "
+    "les principales tendances d'utilisation du vélo : horaires de pointe, jours les plus actifs "
+    "et variations saisonnières. L'objectif est de fournir des éléments concrets pour "
+    "comprendre les comportements cyclistes et éclairer les décisions en matière de mobilité urbaine."
+)
 
 # Sommaire
 
@@ -271,6 +276,13 @@ with onglets[1]:
              markers=True
          )
          st.plotly_chart(fig3, use_container_width=True)
+         
+         st.write("Le trafic cycliste est très faible pendant la nuit, quasi inexistant.\n\n"
+             "Dès 7h, l'activité commence à augmenter rapidement, culminant entre 8h et 9h avec un premier pic marqué."
+             "Au cours de la journée, le trafic reste relativement stable et modéré, avant de connaître un second pic important en fin d'après-midi, entre 17h et 19h.\n\n "
+             "Ces pics correspondent principalement aux déplacements quotidiens des usagers entre leur domicile et leur lieu de travail, illustrant le rôle du vélo dans la mobilité urbaine quotidienne."
+         )
+
 
 # --- Moyenne par jour ---
 with onglets[2]:
@@ -283,6 +295,14 @@ with onglets[2]:
              color="Comptage horaire"
          )
          st.plotly_chart(fig4, use_container_width=True)
+
+         st.write("Le trafic cycliste est très faible pendant la nuit, quasi inexistant.\n\n"
+                  "L'activité cycliste varie au cours de la semaine, avec un trafic globalement plus important en semaine. "
+                  "Le mardi enregistre le volume le plus élevé, mais le mercredi et le jeudi restent très proches, avec seulement de faibles écarts. "
+                  "Cette répartition reflète clairement l'usage du vélo pour les déplacements domicile-travail.\n\n"
+                  "Le lundi et le vendredi présentent des volumes légèrement inférieurs, ce qui pourrait s'expliquer par une plus forte pratique du télétravail ces jours-là.\n\n"
+                  "Le samedi présente une activité intéressante, probablement liée aux sorties de loisirs et aux courses personnelles, tandis que le dimanche reste le jour le plus calme, indiquant un usage plus récréatif que professionnel."
+         )
 
 
 # --- Moyenne par mois ---
