@@ -225,7 +225,7 @@ st.write("Ce rapport présente une étude approfondie des flux de vélos à Pari
 
 # Sommaire
 
-titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur"]
+titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur","Conclusion"]
 onglets = st.tabs(titres_onglets)
 
 kpis = {
@@ -377,4 +377,31 @@ with onglets[4]:
              "liés aux déplacements domicile-travail. Cette répartition souligne le rôle central des "
              "infrastructures cyclables parisiennes et l'importance des connexions avec la petite couronne "
              "pour accompagner la croissance de l'usage du vélo."
+         )
+
+#Conclusion
+
+with onglets[5]:
+         st.write("L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
+             "Les flux horaires montrent des pics clairs le matin (8h-9h) et en fin d'après-midi (17h-19h), "
+             "correspondant aux déplacements domicile-travail. Ces tendances sont complétées par une répartition hebdomadaire "
+             "indiquant un trafic plus soutenu du mardi au jeudi, tandis que le lundi et le vendredi affichent des volumes un peu plus faibles, "
+             "probablement liés à une plus forte pratique du télétravail. Les usages deviennent plus récréatifs le samedi et le dimanche.\n\n"
+    
+             "Les variations mensuelles soulignent une forte saisonnalité, avec un trafic plus élevé de mai à septembre et "
+             "une baisse sensible en hiver. Il est important de rappeler que ces observations portent sur une seule année de données, "
+             "ce qui implique que des conditions météorologiques particulières peuvent accentuer ou réduire ces tendances.\n\n"
+    
+             "L'analyse géographique des capteurs - à interpréter avec prudence car leur implantation reste inégale et "
+             "certains arrondissements en sont dépourvus - met en évidence une concentration particulièrement"
+             "forte des flux cyclistes dans le centre de Paris, notamment autour de Châtelet et des grands axes convergents. "
+             "Les volumes plus modérés observés en périphérie traduisent une densité moindre, " 
+             "ce qui souligne à la fois le rôle structurant du coeur de la capitale et la nécessité de développer "
+             "des infrastructures adaptées pour accompagner l'usage du vélo dans les zones moins centrales. \n\n"
+   
+    
+             "Ces éléments permettent non seulement de mieux comprendre les comportements des cyclistes parisiens, "
+             "mais aussi de guider l'amélioration des infrastructures et des politiques de mobilité durable. "
+             "Une des améliorations possibles serait peut-être l'ajout de nouveaux axes cyclables, "
+             "à considérer en fonction des heures, des saisons et des jours.\n\n"
          )
