@@ -6,4 +6,3 @@ matplotlib
 seaborn
 kaleido
 weasyprint
-libpango-1.0-0
