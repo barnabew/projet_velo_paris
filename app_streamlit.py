@@ -191,42 +191,59 @@ vmax = int_heure["Velos"].max()
 # === Streamlit App ===
 st.set_page_config(page_title="Analyse Comptage Vélo Paris", layout="wide")
 
-st.title("Analyse des Comptages de Vélo à Paris (2024-2025)")
+st.title("Rapport - Analyse des Comptages de Vélos à Paris")
+
+st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
+st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
+
+
+
+# Sommaire
+
+
+st.header("Sommaire")
+
+titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur"]
+onglets = st.tabs(titres_onglets)
+
 
 
 # --- Moyenne par heure ---
-st.header("Moyenne des vélos par heure")
-fig3 = px.line(
-    moyenne_heure, 
-    x="Heure", 
-    y="Comptage horaire", 
-    title="Moyenne des vélos par heure",  
-    markers=True
-)
-st.plotly_chart(fig3, use_container_width=True)
+with onglets[1]:
+         st.header("Moyenne des vélos par heure")
+         fig3 = px.line(
+             moyenne_heure, 
+             x="Heure", 
+             y="Comptage horaire", 
+             title="Moyenne des vélos par heure",  
+             markers=True
+         )
+         st.plotly_chart(fig3, use_container_width=True)
 
 # --- Moyenne par jour ---
-st.header("Moyenne des vélos par jour")
-fig4 = px.bar(
-    moyenne_jour, 
-    x="Jour", 
-    y="Comptage horaire", 
-    title="Moyenne des vélos par jour", 
-    color="Comptage horaire"
-)
-st.plotly_chart(fig4, use_container_width=True)
+with onglets[2]:
+         st.header("Moyenne des vélos par jour")
+         fig4 = px.bar(
+             moyenne_jour, 
+             x="Jour", 
+             y="Comptage horaire", 
+             title="Moyenne des vélos par jour", 
+             color="Comptage horaire"
+         )
+         st.plotly_chart(fig4, use_container_width=True)
 
 
 # --- Moyenne par mois ---
-st.header("Moyenne des vélos par mois")
-fig5 = px.bar(
-    moyenne_mois, 
-    x="Mois", 
-    y="Moyenne_jour", 
-    title="Moyenne journalière des vélos par mois", 
-    color="Moyenne_jour"
-)
-st.plotly_chart(fig5, use_container_width=True)
+with onglets[3]:
+         st.header("Moyenne des vélos par mois")
+         fig5 = px.bar(
+             moyenne_mois, 
+             x="Mois", 
+             y="Moyenne_jour", 
+             title="Moyenne journalière des vélos par mois", 
+             color="Moyenne_jour"
+         )
+         st.plotly_chart(fig5, use_container_width=True)
 
 
 
