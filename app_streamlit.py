@@ -200,13 +200,17 @@ st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 
 # Sommaire
 
-
-st.header("Sommaire")
-
 titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur"]
 onglets = st.tabs(titres_onglets)
 
-
+with onglets[0]:
+         st.write("- Le trafic moyen journalier ne reflète pas la réalité car les mêmes vélos ont pu être comptabilisés plusieurs fois.\n"
+    "- Les pics d'utilisation se situent à 8h et entre 17h et 19h, correspondant aux trajets domicile-travail.\n"
+    "- Le jour le plus chargé est le mardi, mais l'activité reste élevée aussi le mercredi et le jeudi.\n"
+    "- Les mois de mai à septembre affichent les volumes les plus élevés, tandis que l'hiver (décembre, janvier, février) est plus calme.\n\n"
+    "Ces résultats mettent en évidence les grandes tendances de l'usage du vélo à Paris et servent de base pour les analyses détaillées dans les pages suivantes."
+                 )
+         
 
 # --- Moyenne par heure ---
 with onglets[1]:
