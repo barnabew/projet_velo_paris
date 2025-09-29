@@ -236,13 +236,13 @@ with onglets[0]:
          cols = st.columns(4)
          kpi_items = {
                   "Trafic moyen journalier": f"{metrics['trafic_moyen']} vélos",
-                 "Pic du matin": metrics["pic_matin"],
-                 "Pic du soir": metrics["pic_soir"],
-                 "Jour le plus chargé": metrics["jour_max"],
-                 "Jour le moins chargé": metrics["jour_min"],
-                 "Mois le plus chargé": metrics["mois_max"],
-                 "Mois le moins chargé": metrics["mois_min"]
-             }
+                  "Pic du matin": metrics["pic_matin"],
+                  "Pic du soir": metrics["pic_soir"],
+                  "Jour le plus chargé": metrics["jour_max"],
+                  "Jour le moins chargé": metrics["jour_min"],
+                  "Mois le plus chargé": metrics["mois_max"],
+                  "Mois le moins chargé": metrics["mois_min"]
+         }
          for i, (title, value) in enumerate(kpi_items.items()):
                   with cols[i % 4]:
                      st.metric(title, value)
