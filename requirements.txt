@@ -5,5 +5,3 @@ plotly
 matplotlib
 seaborn
 kaleido
-weasyprint
-HTML
