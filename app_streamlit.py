@@ -2,7 +2,7 @@ import streamlit as st
 from data import chargement_nettoyage
 from analyse import kpi_moyennes, moyennes
 from visuel import plot_heure, plot_jour, plot_mois, plot_carte
-from texts import texts
+from textes import textes
 
 
 # === Streamlit App ===
@@ -16,16 +16,11 @@ kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure = kpi_moyennes(df)
 
 
 st.title("Rapport - Analyse des Comptages de Vélos à Paris")
-
-st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
-st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
-
-st.write("Ce rapport présente une étude approfondie des flux de vélos à Paris.\n\n"
-    "À partir des données issues des compteurs automatiques, nous mettons en évidence "
-    "les principales tendances d'utilisation du vélo : horaires de pointe, jours les plus actifs "
-    "et variations saisonnières. L'objectif est de fournir des éléments concrets pour "
-    "comprendre les comportements cyclistes et éclairer les décisions en matière de mobilité urbaine."
-)
+with st.expander("Introduction"):
+    st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
+    st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
+    st.markdown(textes["introduction"])
+    
 
 # Sommaire
 
@@ -42,7 +37,7 @@ with onglets[0]:
                      st.metric(title, value)
 
          
-         st.markdown(texts["resume"])
+         st.markdown(textes["resume"])
   
 
 # --- Moyenne par heure ---
@@ -51,7 +46,7 @@ with onglets[1]:
          
          st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
          
-         st.markdown(texts["heure"])
+         st.markdown(textes["heure"])
 
 
 # --- Moyenne par jour ---
@@ -59,7 +54,7 @@ with onglets[2]:
          st.header("Moyenne des vélos par jour")
          st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
 
-         st.markdown(texts["jour"])
+         st.markdown(textes["jour"])
 
 
 # --- Moyenne par mois ---
@@ -67,7 +62,7 @@ with onglets[3]:
          st.header("Moyenne des vélos par mois")
          st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
 
-         st.markdown(texts["mois"])
+         st.markdown(textes["mois"])
 
 
 # --- Carte interactive par heure ---
@@ -79,9 +74,9 @@ with onglets[4]:
          st.header("Carte interactive des vélos par site et heure")
          st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
 
-         st.markdown(texts["carte"])
+         st.markdown(textes["carte"])
 
 #Conclusion
 
 with onglets[5]:
-         st.markdown(texts["conclusion"])
+         st.markdown(textes["conclusion"])
