@@ -11,7 +11,7 @@ from texts import texts
 st.set_page_config(page_title="Analyse Comptage Vélo Paris", layout="wide")
 
 
-df = load_and_clean_data()
+df = chargement_nettoyage()
 kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure = kpi_moyennes(df)
 
 
