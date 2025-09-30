@@ -39,12 +39,17 @@ onglets = st.tabs(titres_onglets)
 
 # --- Résumé Exécutif ---
 with onglets[0]:
-    st.subheader("KPIs")
-    cols = st.columns(4)
-    for i, (title, value) in enumerate(kpis.items()):
-        with cols[i % 4]:
+    st.header("Résumé Exécutif")
+    col1, col2 = st.columns([1, 2])  # KPIs 1/3, texte 2/3
+    
+    # KPIs à gauche
+    with col2:
+        for i, (title, value) in enumerate(kpis.items()):
             st.metric(title, value)
-    style_textes(textes["resume"])
+    
+    # Texte résumé à droite
+    with col1:
+        style_textes(textes["resume"])
 
 # --- Analyse par heure ---
 with onglets[1]:
