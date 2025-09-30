@@ -12,7 +12,7 @@ def plot_jour(moyenne_jour):
 def plot_mois(moyenne_mois):
     return px.bar(moyenne_mois, x="Mois", y="Moyenne_jour", title="Moyenne journalière des vélos par mois")
 
-def plot_carte(int_heure, heure=17):
+def plot_carte(int_heure, heure=17, k):
   int_17h = int_heure[int_heure["Heure"] == heure]
          
   fig = px.scatter_map(
@@ -24,7 +24,7 @@ def plot_carte(int_heure, heure=17):
       hover_name="Nom du site de comptage",
       size_max=35,
       color_continuous_scale="Viridis",
-      range_color=[vmin, vmax],
+      range_color=[k["vmin"], k["vmax"]],
       zoom=12,
       map_style="carto-positron"  
   )
