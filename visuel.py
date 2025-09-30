@@ -10,7 +10,7 @@ def plot_jour(moyenne_jour):
     return px.bar(moyenne_jour, x="Jour", y="Comptage horaire", title="Moyenne par jour")
 
 def plot_mois(moyenne_mois):
-    return px.bar(moyenne_mois, x="Date et heure de comptage", y="Comptage horaire", title="Moyenne par mois")
+    return px.bar(moyenne_mois, x="Mois"", y="Moyenne_jour", title="Moyenne journalière des vélos par mois")
 
 def plot_carte(int_heure, heure=17):
   int_17h = int_heure[int_heure["Heure"] == heure]
