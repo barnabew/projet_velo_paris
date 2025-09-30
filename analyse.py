@@ -4,7 +4,9 @@ import pandas as pd
 def moyennes(df):
     moyenne_heure = df.groupby("Heure")["Comptage horaire"].mean().reset_index()
     moyenne_jour = df.groupby("Jour")["Comptage horaire"].mean().reset_index()
-    moyenne_mois = df.groupby(df["Date et heure de comptage"].dt.month)["Comptage horaire"].mean().reset_index()
+    somme_mois = df.groupby("Mois_num")["Comptage horaire"].sum().reset_index(name="Total_velos")
+    moyenne_mois = somme_mois.merge(jours_par_mois, on="Mois_num")
+    moyenne_mois["Moyenne_jour"] = (moyenne_mois["Total_velos"] / moyenne_mois["Nb_jours"]).round(1)
     int_heure = df.groupby(["Nom du site de comptage","lat","lon","Heure"]).agg(Velos=("Comptage horaire","sum")).reset_index()
     return moyenne_heure, moyenne_jour, moyenne_mois, int_heure
 
