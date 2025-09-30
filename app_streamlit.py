@@ -62,7 +62,14 @@ with onglets[2]:
 with onglets[3]:
          st.header("Moyenne des vélos par mois")
          st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
-
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes['resume']}
+                </div>
+                """,
+                unsafe_allow_html=True
+        )
          st.markdown(textes["mois"])
 
 
@@ -71,10 +78,17 @@ with onglets[4]:
 
          int_17h = int_heure[int_heure["Heure"] == 17]
 
-         
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes['resume']}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
          st.header("Carte interactive des vélos par site et heure")
          st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
-
+    
          st.markdown(textes["carte"])
 
 #Conclusion
