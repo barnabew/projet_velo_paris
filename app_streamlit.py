@@ -20,7 +20,14 @@ st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
 st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 
 with st.expander("Introduction"):
-    st.markdown(textes["introduction"])
+    st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes["introduction"]}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
     
 
 # Sommaire
@@ -38,7 +45,14 @@ with onglets[0]:
                      st.metric(title, value)
 
          
-         st.markdown(textes["resume"])
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes["resume"]}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
   
 
 # --- Moyenne par heure ---
@@ -47,7 +61,14 @@ with onglets[1]:
          
          st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
          
-         st.markdown(textes["heure"])
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes["heure"]}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
 
 
 # --- Moyenne par jour ---
@@ -55,7 +76,14 @@ with onglets[2]:
          st.header("Moyenne des vélos par jour")
          st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
 
-         st.markdown(textes["jour"])
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes["jour"]}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
 
 
 # --- Moyenne par mois ---
@@ -65,12 +93,11 @@ with onglets[3]:
          st.markdown(
                 f"""
                 <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes['resume']}
+                    {textes["mois"]}
                 </div>
                 """,
                 unsafe_allow_html=True
-        )
-         st.markdown(textes["mois"])
+         )
 
 
 # --- Carte interactive par heure ---
@@ -78,20 +105,27 @@ with onglets[4]:
 
          int_17h = int_heure[int_heure["Heure"] == 17]
 
+         
+         st.header("Carte interactive des vélos par site et heure")
+         st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
+    
          st.markdown(
                 f"""
                 <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes['resume']}
+                    {textes["carte"]}
                 </div>
                 """,
                 unsafe_allow_html=True
          )
-         st.header("Carte interactive des vélos par site et heure")
-         st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
-    
-         st.markdown(textes["carte"])
 
 #Conclusion
 
 with onglets[5]:
-         st.markdown(textes["conclusion"])
+         st.markdown(
+                f"""
+                <div style="max-width: 800px; margin:auto; text-align: justify;">
+                    {textes["conclusion"]}
+                </div>
+                """,
+                unsafe_allow_html=True
+         )
