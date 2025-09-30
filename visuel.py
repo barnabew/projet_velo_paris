@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+import pandas as pd
 
 def plot_heure(moyenne_heure):
     return px.line(moyenne_heure, x="Heure", y="Comptage horaire", title="Moyenne par heure")
