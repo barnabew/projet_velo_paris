@@ -1,112 +1,9 @@
-
-# === 1. Importation des librairies ===
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import plotly.express as px
-import plotly.graph_objects as go
 import streamlit as st
+from data import chargement_nettoyage
+from analyse import kpi_moyennes, moyennes
+from visuel import plot_heure, plot_jour, plot_mois, plot_carte
 from texts import texts
-# === 2. Chargement des données ===
 
-
-df = pd.read_csv("comptage-velo-donnees-compteurs-annee.zip",compression='zip',sep=";")
-
-
-# === 3. Nettoyage des données ===
-
-#On selectionne les colonnes qui nous interesse
-df = df[["Date et heure de comptage",
-         "Identifiant du site de comptage",
-         "Identifiant du compteur",
-         "Nom du site de comptage",
-         "Comptage horaire",
-         "Coordonnées géographiques"
-        ]]
-
-
-#On supprime les lignes où il ya des valeurs manquantes
-df=df.dropna()
-
-
-#On enleve les capteurs defecteux
-defecteux = (
-    df.groupby("Identifiant du site de comptage")
-    .agg(Moyenne_velo =("Comptage horaire","mean"))
-    .reset_index()
-)
-
-defecteux2 = defecteux[defecteux["Moyenne_velo"] == 0]
-
-sites_defectueux = defecteux2["Identifiant du site de comptage"].tolist()
-
-df = df[~df["Identifiant du site de comptage"].isin(sites_defectueux)]
-
-
-
-# On nettoye les noms d'adresses
-df["Nom du site de comptage"] = (
-    df["Nom du site de comptage"]
-    .str.replace(r"^(Face\s*au\s*\d+\s*)", "", regex=True)
-    .str.replace(r"^(Totem\s*\d+\s*)", "", regex=True)   # supprime "Totem + numéro"
-    .str.replace(r"^\d+\s*", "", regex=True)            # supprime juste un numéro au début
-    .str.strip()
-)
-
-
-
-
-# On converti en datetime , en forcant l'utc
-df["Date et heure de comptage"] = pd.to_datetime(df["Date et heure de comptage"], errors="coerce", utc=True)
-
-# On retire le fuseau horaire
-df["Date et heure de comptage"] =(df["Date et heure de comptage"].dt.tz_convert(None))
-
-# Création de la variable heure du comptage
-df["Heure"] = df["Date et heure de comptage"].dt.hour + 1
-
-# Création de la variable jour du comptage
-df["Jour"] = df["Date et heure de comptage"].dt.day_name()
-# Transformation des jours en francais
-jours_fr = { 
-    "Monday": "Lundi",
-    "Tuesday": "Mardi", 
-    "Wednesday": "Mercredi", 
-    "Thursday": "Jeudi", 
-    "Friday": "Vendredi", 
-    "Saturday": "Samedi", 
-    "Sunday": "Dimanche" 
-}
-
-df["Jour"] = df["Jour"].map(jours_fr)
-
-# Creation des variables latitutes et longitudes des capteurs
-df[["lat", "lon"]] = df["Coordonnées géographiques"].str.split(",", expand=True).astype(float)
-
-# Création de la variable mois du comptage
-df["Mois"] = df["Date et heure de comptage"].dt.month_name()
-
-# Variables utile pour calcul sur les mois 
-# On crée la variable mois sur les calcul de la partie 4. car on doit prendre en compte le nombre de jours par mois
-df["Mois_num"] = df["Date et heure de comptage"].dt.month  # pour trier
-
-#calcul du nombre de jour par mois
-jours_par_mois = (
-    df.groupby("Mois_num")["Date et heure de comptage"]
-      .apply(lambda x: x.dt.date.nunique())
-      .reset_index(name="Nb_jours")
-)
-
-
-
-
-
-#Petite verification des variables
-print(" Vérification doublons et valeurs manquantes")
-print("Nombre de doublons :", df.duplicated().sum())
-print("Valeurs manquantes restantes :")
-print(df.isnull().sum())
 
 
 
@@ -181,6 +78,11 @@ trafic_moyen = int(df["Comptage horaire"].sum() / 365)
 
 st.set_page_config(page_title="Analyse Comptage Vélo Paris", layout="wide")
 
+
+df = load_and_clean_data()
+kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure = kpi_moyennes(df)
+
+
 st.title("Rapport - Analyse des Comptages de Vélos à Paris")
 
 st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
@@ -203,15 +105,6 @@ onglets = st.tabs(titres_onglets)
 with onglets[0]:
          st.subheader("KPIs")
          cols = st.columns(4)
-         kpis = {
-             "Trafic moyen journalier": f"{trafic_moyen} vélos",
-             "Pic du matin": "8h - 9h",
-             "Pic du soir": "17h - 19h",
-             "Jour le plus chargé": jour_max,
-             "Jour le moins chargé": jour_min,
-             "Mois le plus chargé": mois_max,
-             "Mois le moins chargé": mois_min
-         }
          for i, (title, value) in enumerate(kpis.items()):
                   with cols[i % 4]:
                      st.metric(title, value)
@@ -223,14 +116,8 @@ with onglets[0]:
 # --- Moyenne par heure ---
 with onglets[1]:
          st.header("Moyenne des vélos par heure")
-         fig3 = px.line(
-             moyenne_heure, 
-             x="Heure", 
-             y="Comptage horaire", 
-             title="Moyenne des vélos par heure",  
-             markers=True
-         )
-         st.plotly_chart(fig3, use_container_width=True)
+         
+         st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
          
          st.markdown(texts["heure"])
 
@@ -238,14 +125,7 @@ with onglets[1]:
 # --- Moyenne par jour ---
 with onglets[2]:
          st.header("Moyenne des vélos par jour")
-         fig4 = px.bar(
-             moyenne_jour, 
-             x="Jour", 
-             y="Comptage horaire", 
-             title="Moyenne des vélos par jour", 
-             color="Comptage horaire"
-         )
-         st.plotly_chart(fig4, use_container_width=True)
+         st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
 
          st.markdown(texts["jour"])
 
@@ -253,14 +133,7 @@ with onglets[2]:
 # --- Moyenne par mois ---
 with onglets[3]:
          st.header("Moyenne des vélos par mois")
-         fig5 = px.bar(
-             moyenne_mois, 
-             x="Mois", 
-             y="Moyenne_jour", 
-             title="Moyenne journalière des vélos par mois", 
-             color="Moyenne_jour"
-         )
-         st.plotly_chart(fig5, use_container_width=True)
+         st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
 
          st.markdown(texts["mois"])
 
@@ -272,44 +145,7 @@ with onglets[4]:
 
          
          st.header("Carte interactive des vélos par site et heure")
-         vmin = int_17h["Velos"].min()
-         vmax = int_17h["Velos"].max()
-         
-         fig = px.scatter_map(
-             int_17h,
-             lat="lat",
-             lon="lon",
-             size="Velos",
-             color="Velos",
-             hover_name="Nom du site de comptage",
-             size_max=35,
-             color_continuous_scale="Viridis",
-             range_color=[vmin, vmax],
-             zoom=12,
-             map_style="carto-positron"  
-         )
-         
-         # Ajustements du rendu
-         fig.update_traces(
-             marker=dict(
-                 opacity=0.7,  
-                 sizemode="area"
-             )
-         )
-         
-         # Mise en page carrée et centrée
-         fig.update_layout(
-             width=700,
-             height=700,
-             title="Trafic cycliste à Paris - 17h",
-             title_x=0.5,  # centrer le titre
-             margin=dict(l=20, r=20, t=50, b=20),
-             coloraxis_colorbar=dict(title="Nombre de vélos"),
-             map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
-         )
-         st.markdown("<div style='display: flex; justify-content: center;'>", unsafe_allow_html=True)
-         st.plotly_chart(fig, use_container_width=False)
-         st.markdown("</div>", unsafe_allow_html=True)
+         st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
 
          st.markdown(texts["carte"])
 
