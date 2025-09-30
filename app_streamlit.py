@@ -7,7 +7,7 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-
+from texts import texts
 # === 2. Chargement des données ===
 
 
@@ -347,6 +347,7 @@ with onglets[4]:
 #Conclusion
 
 with onglets[5]:
+         st.markdown(texts["conclusion"])
          st.write("L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
              "Les flux horaires montrent des pics clairs le matin (8h-9h) et en fin d'après-midi (17h-19h), "
              "correspondant aux déplacements domicile-travail. Ces tendances sont complétées par une répartition hebdomadaire "
