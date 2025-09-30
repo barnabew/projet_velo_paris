@@ -24,7 +24,7 @@ def plot_carte(int_heure, heure=17):
       hover_name="Nom du site de comptage",
       size_max=35,
       color_continuous_scale="Viridis",
-      range_color=[int_heure["Velos"].min(), vmin = int_heure["Velos"].max()],
+      range_color=[int_heure["Velos"].min(),int_heure["Velos"].max()],
       zoom=12,
       map_style="carto-positron"  
   )
