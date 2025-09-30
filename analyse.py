@@ -2,6 +2,13 @@ import pandas as pd
 import pandas as pd
 
 def moyennes(df):
+
+
+    jours_par_mois = (
+          df.groupby("Mois_num")["Date et heure de comptage"]
+            .apply(lambda x: x.dt.date.nunique())
+            .reset_index(name="Nb_jours")
+      )
     moyenne_heure = df.groupby("Heure")["Comptage horaire"].mean().reset_index()
     moyenne_jour = df.groupby("Jour")["Comptage horaire"].mean().reset_index()
     somme_mois = df.groupby("Mois_num")["Comptage horaire"].sum().reset_index(name="Total_velos")
