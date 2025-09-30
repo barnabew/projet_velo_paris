@@ -77,7 +77,7 @@ with onglets[4]:
 
          
          st.header("Carte interactive des vélos par site et heure")
-         st.plotly_chart(plot_carte(int_heure,heure=17,kpis), use_container_width=True)
+         st.plotly_chart(plot_carte(int_heure,kpis,heure=17), use_container_width=True)
 
          st.markdown(texts["carte"])
 
