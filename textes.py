@@ -1,4 +1,11 @@
-texts = {
+textes = {
+
+    "introduction" : "Ce rapport présente une étude approfondie des flux de vélos à Paris.\n\n"
+                "À partir des données issues des compteurs automatiques, nous mettons en évidence "
+                "les principales tendances d'utilisation du vélo : horaires de pointe, jours les plus actifs "
+                "et variations saisonnières. L'objectif est de fournir des éléments concrets pour "
+                "comprendre les comportements cyclistes et éclairer les décisions en matière de mobilité urbaine."
+    
     "conclusion":"L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
              "Les flux horaires montrent des pics clairs le matin (8h-9h) et en fin d'après-midi (17h-19h), "
              "correspondant aux déplacements domicile-travail. Ces tendances sont complétées par une répartition hebdomadaire "
