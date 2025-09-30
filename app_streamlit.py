@@ -19,113 +19,69 @@ st.title("Rapport - Analyse des Comptages de Vélos à Paris")
 st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
 st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 
-with st.expander("Introduction"):
+# Fonction helper pour texte full-width avec padding
+def style_textes(txt):
     st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["introduction"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
-    
+        f"""
+        <div style="padding: 0 40px; text-align: justify;">
+            {txt}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+with st.expander("Introduction"):
+    style_textes(textes["introduction"])
 
 # Sommaire
-
 titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur","Conclusion"]
 onglets = st.tabs(titres_onglets)
 
-
-
+# --- Résumé Exécutif ---
 with onglets[0]:
-         st.subheader("KPIs")
-         cols = st.columns(4)
-         for i, (title, value) in enumerate(kpis.items()):
-                  with cols[i % 4]:
-                     st.metric(title, value)
+    st.subheader("KPIs")
+    cols = st.columns(4)
+    for i, (title, value) in enumerate(kpis.items()):
+        with cols[i % 4]:
+            st.metric(title, value)
+    style_textes(textes["resume"])
 
-         
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["resume"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
-  
-
-# --- Moyenne par heure ---
+# --- Analyse par heure ---
 with onglets[1]:
-         st.header("Moyenne des vélos par heure")
-         
-         st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
-         
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["heure"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
+    st.header("Moyenne des vélos par heure")
+    col1, col2 = st.columns([1, 2])  # texte 1/3, graphique 2/3
+    with col2:
+        st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
+    with col1:
+        style_textes(textes["heure"])
 
-
-# --- Moyenne par jour ---
+# --- Analyse par jour ---
 with onglets[2]:
-         st.header("Moyenne des vélos par jour")
-         st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
+    st.header("Moyenne des vélos par jour")
+    col1, col2 = st.columns([1, 2])
+    with col2:
+        st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
+    with col1:
+        style_textes(textes["jour"])
 
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["jour"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
-
-
-# --- Moyenne par mois ---
+# --- Analyse par mois ---
 with onglets[3]:
-         st.header("Moyenne des vélos par mois")
-         st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["mois"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
-
+    st.header("Moyenne des vélos par mois")
+    col1, col2 = st.columns([1, 2])
+    with col2:
+        st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
+    with col1:
+        style_textes(textes["mois"])
 
 # --- Carte interactive par heure ---
 with onglets[4]:
+    st.header("Carte interactive des vélos par site et heure")
+    col1, col2 = st.columns([1, 2])
+    with col2:
+        st.plotly_chart(plot_carte(int_heure, heure=17), use_container_width=True)
+    with col1:
+        style_textes(textes["carte"])
 
-         int_17h = int_heure[int_heure["Heure"] == 17]
-
-         
-         st.header("Carte interactive des vélos par site et heure")
-         st.plotly_chart(plot_carte(int_heure,heure=17), use_container_width=True)
-    
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["carte"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
-
-#Conclusion
-
+# --- Conclusion ---
 with onglets[5]:
-         st.markdown(
-                f"""
-                <div style="max-width: 800px; margin:auto; text-align: justify;">
-                    {textes["conclusion"]}
-                </div>
-                """,
-                unsafe_allow_html=True
-         )
+    style_textes(textes["conclusion"])
