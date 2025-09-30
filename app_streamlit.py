@@ -1,7 +1,4 @@
 
-import kaleido
-
-
 # === 1. Importation des librairies ===
 import numpy as np
 import pandas as pd
