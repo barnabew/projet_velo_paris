@@ -10,7 +10,7 @@ def plot_jour(moyenne_jour):
     return px.bar(moyenne_jour, x="Jour", y="Comptage horaire", title="Moyenne par jour")
 
 def plot_mois(moyenne_mois):
-    return px.bar(moyenne_mois, x="Mois"", y="Moyenne_jour", title="Moyenne journalière des vélos par mois")
+    return px.bar(moyenne_mois, x="Mois", y="Moyenne_jour", title="Moyenne journalière des vélos par mois")
 
 def plot_carte(int_heure, heure=17):
   int_17h = int_heure[int_heure["Heure"] == heure]
@@ -35,5 +35,13 @@ def plot_carte(int_heure, heure=17):
           sizemode="area"
       )
   )
-
+  fig.update_layout(
+    width=700,
+    height=700,
+    title="Trafic cycliste à Paris - 17h",
+    title_x=0.5,  # centrer le titre
+    margin=dict(l=20, r=20, t=50, b=20),
+    coloraxis_colorbar=dict(title="Nombre de vélos"),
+    map=dict(center={"lat": 48.8566, "lon": 2.3441}, zoom=10.8)  # centrage sur Paris
+   )
   return fig
