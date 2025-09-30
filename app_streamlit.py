@@ -16,9 +16,10 @@ kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure = kpi_moyennes(df)
 
 
 st.title("Rapport - Analyse des Comptages de Vélos à Paris")
+st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
+st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
+
 with st.expander("Introduction"):
-    st.markdown("### Auteur : Barnabé Willenbucher - Data Analyst Freelance")
-    st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
     st.markdown(textes["introduction"])
     
 
