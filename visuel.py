@@ -12,7 +12,7 @@ def plot_jour(moyenne_jour):
 def plot_mois(moyenne_mois):
     return px.bar(moyenne_mois, x="Mois", y="Moyenne_jour", title="Moyenne journalière des vélos par mois")
 
-def plot_carte(int_heure, heure=17, k):
+def plot_carte(int_heure,k, heure=17):
   int_17h = int_heure[int_heure["Heure"] == heure]
          
   fig = px.scatter_map(
