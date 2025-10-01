@@ -38,6 +38,10 @@ def chargement_nettoyage():
       df["Date et heure de comptage"] =(df["Date et heure de comptage"].dt.tz_convert(None))
       
       df["Heure"] = df["Date et heure de comptage"].dt.hour + 1
+
+      df["Jour"] = df["Date et heure de comptage"].dt.day_name()
+
+      df["Mois"] = df["Date et heure de comptage"].dt.month_name()
       
       df["Jour_num"] = df["Date et heure de comptage"].dt.dayofweek
       
