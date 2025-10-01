@@ -8,17 +8,17 @@ def moyennes(df):
           3: "Jeudi", 4: "Vendredi", 5: "Samedi", 6: "Dimanche"
       }
 
-      mois_fr = {
+     mois_fr = {
           1: "Janvier",2: "Février",3: "Mars",4: "Avril",
           5: "Mai",6: "Juin",7: "Juillet",8: "Août",
           9: "Septembre",10: "Octobre",11: "Novembre",12: "Décembre"
       }
 
-      jours_par_mois = (
+     jours_par_mois = (
           df.groupby("Mois_num")["Date et heure de comptage"]
             .apply(lambda x: x.dt.date.nunique())
             .reset_index(name="Nb_jours")
-      )
+     )
 
     
     moyenne_heure = (
