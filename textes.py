@@ -47,20 +47,20 @@ textes = {
     "Ces résultats mettent en évidence les grandes tendances de l'usage du vélo à Paris et servent de base pour les analyses détaillées dans les pages suivantes.",
 
     "heure": "Le trafic cycliste est très faible pendant la nuit, quasi inexistant.\n\n"
-             "Dès 7h, l'activité commence à augmenter rapidement, culminant entre 8h et 9h avec un premier pic marqué."
+             "Dès 7h, l'activité commence à augmenter rapidement, culminant entre 8h et 9h avec un premier pic marqué.\n\n"
              "Au cours de la journée, le trafic reste relativement stable et modéré, avant de connaître un second pic important en fin d'après-midi, entre 17h et 19h.\n\n "
              "Ces pics correspondent principalement aux déplacements quotidiens des usagers entre leur domicile et leur lieu de travail, illustrant le rôle du vélo dans la mobilité urbaine quotidienne.",
     
     "jour": "Le trafic cycliste est très faible pendant la nuit, quasi inexistant.\n\n"
-                  "L'activité cycliste varie au cours de la semaine, avec un trafic globalement plus important en semaine. "
-                  "Le mardi enregistre le volume le plus élevé, mais le mercredi et le jeudi restent très proches, avec seulement de faibles écarts. "
+                  "L'activité cycliste varie au cours de la semaine, avec un trafic globalement plus important en semaine.\n\n "
+                  "Le mardi enregistre le volume le plus élevé, mais le mercredi et le jeudi restent très proches, avec seulement de faibles écarts.\n\n "
                   "Cette répartition reflète clairement l'usage du vélo pour les déplacements domicile-travail.\n\n"
                   "Le lundi et le vendredi présentent des volumes légèrement inférieurs, ce qui pourrait s'expliquer par une plus forte pratique du télétravail ces jours-là.\n\n"
                   "Le samedi présente une activité intéressante, probablement liée aux sorties de loisirs et aux courses personnelles, tandis que le dimanche reste le jour le plus calme, indiquant un usage plus récréatif que professionnel.",
     
-    "mois" : "Les mois de mai à septembre affichent les niveaux de trafic les plus élevés, en lien avec des conditions météorologiques favorables et une luminosité accrue. "
+    "mois" : "Les mois de mai à septembre affichent les niveaux de trafic les plus élevés, en lien avec des conditions météorologiques favorables et une luminosité accrue.\n\n "
              "À l'inverse, l'hiver (décembre, janvier, février) présente une baisse significative de l'activité cycliste.\n\n"
-             "Il convient de rappeler que ces observations portent sur une seule année de données. "
-             "Ainsi, un mois exceptionnellement ensoleillé, comme un juin particulièrement beau, pourrait accentuer le trafic observé, tandis qu'un mois pluvieux pourrait le réduire. "
+             "Il convient de rappeler que ces observations portent sur une seule année de données.\n\n "
+             "Ainsi, un mois exceptionnellement ensoleillé, comme un juin particulièrement beau, pourrait accentuer le trafic observé, tandis qu'un mois pluvieux pourrait le réduire.\n\n "
              "Ces variations doivent être prises en compte pour interpréter correctement les tendances saisonnières."
 }
