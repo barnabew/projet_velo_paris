@@ -35,9 +35,9 @@ textes = {
              "Issy-les-Moulineaux) et vers le sud (Montrouge, Ivry), traduisant l'importance des corridors "
              "d'entrée et de sortie de la capitale.\n\n"
              "A mesure que l'on s'éloigne du centre, l'intensité décroît, mais les points de comptage "
-             "témoignent d'une pratique cycliste significative en périphérie immédiate. "
+             "témoignent d'une pratique cycliste significative en périphérie immédiate.\n\n"
              "Le choix de 17h illustre clairement l'heure de pointe du soir, marquée par des flux soutenus "
-             "liés aux déplacements domicile-travail. Cette répartition souligne le rôle central des "
+             "liés aux déplacements domicile-travail.\n\n Cette répartition souligne le rôle central des "
              "infrastructures cyclables parisiennes et l'importance des connexions avec la petite couronne "
              "pour accompagner la croissance de l'usage du vélo.",
 
