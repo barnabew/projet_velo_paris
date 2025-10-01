@@ -3,7 +3,6 @@ from data import chargement_nettoyage
 from analyse import kpi_moyennes, moyennes
 from visuel import plot_heure, plot_jour, plot_mois, plot_carte
 from textes import textes
-from pdf import create_pdf,plotly_to_png_bytes
 
 # === Streamlit App ===
 
@@ -56,16 +55,7 @@ with onglets[0]:
     # Texte résumé à droite
     with col1:
         style_textes(textes["resume"])
-        if st.button("Générer PDF complet"):
-            pdf_buffer = create_pdf(kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure)
-            st.download_button(
-                label="Télécharger le PDF",
-                data=pdf_buffer,
-                file_name="rapport_velo.pdf",
-                mime="application/pdf"
-            )
-            st.success("PDF prêt au téléchargement !")
-            
+        
 # --- Analyse par heure ---
 with onglets[1]:
     st.header("Moyenne des vélos par heure")
