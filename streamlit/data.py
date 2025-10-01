@@ -42,23 +42,6 @@ def chargement_nettoyage():
       df["Jour_num"] = df["Date et heure de comptage"].dt.dayofweek
       
       df["Mois_num"] = df["Date et heure de comptage"].dt.month
-
-      jours_fr = {
-          0: "Lundi", 1: "Mardi", 2: "Mercredi",
-          3: "Jeudi", 4: "Vendredi", 5: "Samedi", 6: "Dimanche"
-      }
-
-      mois_fr = {
-          1: "Janvier",2: "Février",3: "Mars",4: "Avril",
-          5: "Mai",6: "Juin",7: "Juillet",8: "Août",
-          9: "Septembre",10: "Octobre",11: "Novembre",12: "Décembre"
-      }
-
-      jours_par_mois = (
-          df.groupby("Mois_num")["Date et heure de comptage"]
-            .apply(lambda x: x.dt.date.nunique())
-            .reset_index(name="Nb_jours")
-      )
       
       df[["lat", "lon"]] = df["Coordonnées géographiques"].str.split(",", expand=True).astype(float)
       
