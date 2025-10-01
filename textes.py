@@ -1,10 +1,17 @@
 textes = {
 
-    "introduction" : "Ce rapport présente une étude approfondie des flux de vélos à Paris.\n\n"
-                "À partir des données issues des compteurs automatiques, nous mettons en évidence "
-                "les principales tendances d'utilisation du vélo : horaires de pointe, jours les plus actifs "
-                "et variations saisonnières. L'objectif est de fournir des éléments concrets pour "
-                "comprendre les comportements cyclistes et éclairer les décisions en matière de mobilité urbaine.",
+    "introduction" : "Ce rapport raconte l'histoire des déplacements à vélo dans Paris, "
+                "telle que la révèlent les compteurs automatiques installés dans la ville."
+                "Au fil des chiffres, on voit apparaître des rythmes de vie : les heures "
+                "de pointe où les vélos envahissent les rues, les jours où la pratique est "
+                "la plus intense, et les saisons qui façonnent différemment les habitudes "
+                "des cyclistes."
+                "Au-delà des courbes et des moyennes, l'enjeu est de mieux comprendre "
+                "comment les Parisiennes et Parisiens s'approprient ce mode de transport "
+                "au quotidien."
+                "Ces observations offrent des clés de lecture précieuses pour accompagner "
+                "l'essor du vélo et imaginer une ville plus fluide, plus respirable et "
+                "mieux adaptée aux mobilités de demain.",
     
     "conclusion":"L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
              "Les flux horaires montrent des pics clairs le matin (8h-9h) et en fin d'après-midi (17h-19h), "
