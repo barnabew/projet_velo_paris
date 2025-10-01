@@ -69,7 +69,7 @@ with onglets[1]:
 # --- Analyse par jour ---
 with onglets[2]:
     st.header("Moyenne des vélos par jour")
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1, 1])
     with col2:
         st.plotly_chart(plot_jour(moyenne_jour), use_container_width=True)
     with col1:
@@ -78,7 +78,7 @@ with onglets[2]:
 # --- Analyse par mois ---
 with onglets[3]:
     st.header("Moyenne des vélos par mois")
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1, 1])
     with col2:
         st.plotly_chart(plot_mois(moyenne_mois), use_container_width=True)
     with col1:
@@ -87,7 +87,7 @@ with onglets[3]:
 # --- Carte interactive par heure ---
 with onglets[4]:
     st.header("Carte interactive des vélos par site et heure")
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1, 1])
     with col2:
         st.plotly_chart(plot_carte(int_heure, heure=17), use_container_width=True)
     with col1:
