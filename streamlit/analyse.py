@@ -72,8 +72,8 @@ def kpi_moyennes(df):
   # Trafic moyen journalier
   trafic_moyen = int(df["Comptage horaire"].sum() / 365)
   return {
-             "Pic du matin": pic_matin + "h",
-             "Pic du soir": pic_soir + "h",
+             "Pic du matin": str(pic_matin) + "h",
+             "Pic du soir": str(pic_soir) + "h",
              "Jour le plus chargé": jour_max,
              "Jour le moins chargé": jour_min,
              "Mois le plus chargé": mois_max,
