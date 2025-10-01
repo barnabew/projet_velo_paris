@@ -33,8 +33,11 @@ def style_textes(txt):
 with st.expander("Introduction"):
     style_textes(textes["introduction"])
 
+with st.expander("Conclusion"):
+    style_textes(textes["conclusion"])
+
 # Sommaire
-titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur","Conclusion"]
+titres_onglets = ["Résumé Exécutif","Analyse par heure","Analyse par jour","Analyse par mois","Analyse par compteur"]
 onglets = st.tabs(titres_onglets)
 
 # --- Résumé Exécutif ---
@@ -44,8 +47,11 @@ with onglets[0]:
     
     # KPIs à gauche
     with col2:
+        cols = st.columns(3)
         for i, (title, value) in enumerate(kpis.items()):
-            st.metric(title, value)
+            col = cols[i % 3]   # choisir la bonne colonne (0,1,2)
+            with col:
+                st.metric(title, value)
     
     # Texte résumé à droite
     with col1:
@@ -87,6 +93,4 @@ with onglets[4]:
     with col1:
         style_textes(textes["carte"])
 
-# --- Conclusion ---
-with onglets[5]:
-    style_textes(textes["conclusion"])
+    
