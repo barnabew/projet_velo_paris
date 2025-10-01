@@ -1,9 +1,8 @@
-streamlit
-pandas
-numpy
-plotly
-matplotlib
-seaborn
-kaleido
-reportlab
-io
+streamlit>=1.24.0
+pandas>=2.1.0
+numpy>=1.25.0
+plotly>=5.16.0
+matplotlib>=3.7.2
+reportlab>=4.1.0
+pdfkit>=1.0.0
+geopandas>=1.2.0
