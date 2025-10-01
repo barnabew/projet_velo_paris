@@ -52,6 +52,8 @@ def chargement_nettoyage():
       }
       
       df["Jour"] = df["Jour"].map(jours_fr)
+
+      df["Jour_num"] = df["Date et heure de comptage"].dt.day
       
       df[["lat", "lon"]] = df["Coordonnées géographiques"].str.split(",", expand=True).astype(float)
       
