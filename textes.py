@@ -1,17 +1,11 @@
 textes = {
 
-    "introduction" : "Ce rapport raconte l'histoire des déplacements à vélo dans Paris, "
-                "telle que la révèlent les compteurs automatiques installés dans la ville."
-                "Au fil des chiffres, on voit apparaître des rythmes de vie : les heures "
-                "de pointe où les vélos envahissent les rues, les jours où la pratique est "
-                "la plus intense, et les saisons qui façonnent différemment les habitudes "
-                "des cyclistes."
-                "Au-delà des courbes et des moyennes, l'enjeu est de mieux comprendre "
-                "comment les Parisiennes et Parisiens s'approprient ce mode de transport "
-                "au quotidien."
-                "Ces observations offrent des clés de lecture précieuses pour accompagner "
-                "l'essor du vélo et imaginer une ville plus fluide, plus respirable et "
-                "mieux adaptée aux mobilités de demain.",
+    "introduction" : """
+                        Ce rapport raconte l’histoire des déplacements à vélo dans Paris telle que la révèlent les compteurs automatiques installés dans la ville.
+                        Au fil des chiffres, on voit apparaître des rythmes de vie : les heures de pointe où les vélos envahissent les rues, les jours où la pratique est la plus intense, et les saisons qui façonnent différemment les habitudes des cyclistes.
+                        Au-delà des courbes et des moyennes, l’enjeu est de mieux comprendre comment les Parisiennes et Parisiens s’approprient ce mode de transport au quotidien.
+                        Ces observations offrent des clés de lecture précieuses pour accompagner l’essor du vélo et imaginer une ville plus fluide, plus respirable et mieux adaptée aux mobilités de demain.
+                    """,
     
     "conclusion":"L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
              "Les flux horaires montrent des pics clairs le matin (8h-9h) et en fin d'après-midi (17h-19h), "
