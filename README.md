@@ -15,3 +15,9 @@ Cette étude a permis d'identifier les jours et heures les plus chargés, de met
 ## Organisation du projet
 
 Le notebook `Projet_velo.ipynb` contient toutes les explications détaillées sur le traitement des données, le calcul des indicateurs et les analyses réalisées. Le dossier `streamlit/` reprend le même code, mais il a été divisé en différentes parties afin de rendre le code plus lisible et modulaire. Cette séparation facilite la maintenance et l'extension de l'application (elle aurait également pu être appliquée dans le notebook)
+
+## Liens utiles
+
+L'application Streamlit est disponible en ligne : [Accéder à l'application](https://projetveloparis.streamlit.app/)  
+
+Les données utilisées pour ce projet proviennent de la plateforme Open Data de la Ville de Paris : [Données comptage vélo Paris](https://opendata.paris.fr/explore/dataset/comptage-velo-donnees-compteurs/information/?disjunctive.id_compteur&disjunctive.nom_compteur&disjunctive.id&disjunctive.name)
