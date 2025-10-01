@@ -3,7 +3,7 @@ textes = {
     "introduction" : "Ce rapport raconte l’histoire des déplacements à vélo dans Paris telle que la révèlent les compteurs automatiques installés dans la ville.\n\n"
                 "Au fil des chiffres, on voit apparaître des rythmes de vie : les heures de pointe où les vélos envahissent les rues, les jours où la pratique est la plus intense, et les saisons qui façonnent différemment les habitudes des cyclistes.\n\n"
                 "Au-delà des courbes et des moyennes, l’enjeu est de mieux comprendre comment les Parisiennes et Parisiens s’approprient ce mode de transport au quotidien.\n\n"
-                "Ces observations offrent des clés de lecture précieuses pour accompagner l’essor du vélo et imaginer une ville plus fluide, plus respirable et mieux adaptée aux mobilités de demain.\n\n"
+                "Ces observations offrent des clés de lecture précieuses pour accompagner l’essor du vélo et imaginer une ville plus fluide, plus respirable et mieux adaptée aux mobilités de demain."
                     ,
     
     "conclusion":"L'analyse des données met en avant le rôle central du vélo dans la mobilité urbaine parisienne. "
@@ -27,7 +27,7 @@ textes = {
              "Ces éléments permettent non seulement de mieux comprendre les comportements des cyclistes parisiens, "
              "mais aussi de guider l'amélioration des infrastructures et des politiques de mobilité durable. "
              "Une des améliorations possibles serait peut-être l'ajout de nouveaux axes cyclables, "
-             "à considérer en fonction des heures, des saisons et des jours.\n\n",
+             "à considérer en fonction des heures, des saisons et des jours.",
 
     "carte" : "L'analyse de la carte à 17h met en évidence une forte concentration du trafic cycliste "
              "dans l'hypercentre parisien, avec des volumes particulièrement élevés sur les axes centraux "
