@@ -4,26 +4,24 @@ import pandas as pd
 def moyennes(df):
 
 
-    moyenne_heure = df.groupby("Heure")["Comptage horaire"].mean().reset_index()
-    moyenne_jour = df.groupby("Jour")["Comptage horaire"].mean().reset_index().sort_values(by="Jour_num",ascending=True)
+    moyenne_heure = (
+        (df.groupby("Heure")["Comptage horaire"].sum() / 365)
+        .reset_index().round(1)
+        .sort_values(by="Heure")
+    )
+    moyenne_jour = (
+        (df.groupby("Jour_num")["Comptage horaire"].sum() / 52)
+        .reset_index().round(1)
+        .sort_values(by="Jour_num", ascending=True)
+    )
+    
+    moyenne_jour["Jour"] = moyenne_jour["Jour_num"].map(jours_fr)
 
-
-    jours_par_mois = (
-          df.groupby("Mois_num")["Date et heure de comptage"]
-            .apply(lambda x: x.dt.date.nunique())
-            .reset_index(name="Nb_jours")
-      )
     somme_mois = df.groupby("Mois_num")["Comptage horaire"].sum().reset_index(name="Total_velos")
     moyenne_mois = somme_mois.merge(jours_par_mois, on="Mois_num")
     moyenne_mois["Moyenne_jour"] = (moyenne_mois["Total_velos"] / moyenne_mois["Nb_jours"]).round(1)
-    mois_fr = {
-    "January": "Janvier","February": "Février","March": "Mars","April": "Avril",
-    "May": "Mai","June": "Juin","July": "Juillet","August": "Août",
-    "September": "Septembre","October": "Octobre","November": "Novembre","December": "Décembre"
-    }
-    moyenne_mois["Mois"] = moyenne_mois["Mois_num"].apply(lambda x: pd.to_datetime(str(x), format="%m").month_name())
-    moyenne_mois["Mois"] = moyenne_mois["Mois"].map(mois_fr)
 
+    moyenne_mois["Mois"] = moyenne_mois["Mois_num"].map(mois_fr)
     
     int_heure = df.groupby(["Nom du site de comptage","lat","lon","Heure"]).agg(Velos=("Comptage horaire","sum")).reset_index()
     return moyenne_heure, moyenne_jour, moyenne_mois, int_heure
