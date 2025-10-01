@@ -41,8 +41,8 @@ textes = {
              "infrastructures cyclables parisiennes et l'importance des connexions avec la petite couronne "
              "pour accompagner la croissance de l'usage du vélo.",
 
-    "resume" : "- Les pics d'utilisation se situent à 8h et entre 17h et 19h, correspondant aux trajets domicile-travail.\n"
-    "- Le jour le plus chargé est le mardi, mais l'activité reste élevée aussi le mercredi et le jeudi.\n"
+    "resume" : "- Les pics d'utilisation se situent à 8h et entre 17h et 19h, correspondant aux trajets domicile-travail.\n\n"
+    "- Le jour le plus chargé est le mardi, mais l'activité reste élevée aussi le mercredi et le jeudi.\n\n"
     "- Les mois de mai à septembre affichent les volumes les plus élevés, tandis que l'hiver (décembre, janvier, février) est plus calme.\n\n"
     "Ces résultats mettent en évidence les grandes tendances de l'usage du vélo à Paris et servent de base pour les analyses détaillées dans les pages suivantes.",
 
