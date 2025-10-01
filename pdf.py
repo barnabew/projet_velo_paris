@@ -1,14 +1,19 @@
-# --- Fonction pour convertir un graphique Plotly en image PNG ---
-def plotly_to_png_bytes(fig, width=700, height=400):
-    img_bytes = fig.to_image(format="png", width=width, height=height)
-    buf = io.BytesIO(img_bytes)
-    return buf
+
 
 # --- Générer PDF ---
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
 import io
+from analyse import kpi_moyennes, moyennes
+from visuel import plot_heure, plot_jour, plot_mois, plot_carte
+
+
+# --- Fonction pour convertir un graphique Plotly en image PNG ---
+def plotly_to_png_bytes(fig, width=700, height=400):
+    img_bytes = fig.to_image(format="png", width=width, height=height)
+    buf = io.BytesIO(img_bytes)
+    return buf
 
 def create_pdf(kpis, moyenne_heure, moyenne_jour, moyenne_mois, int_heure):
     buffer = io.BytesIO()
