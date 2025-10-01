@@ -53,7 +53,8 @@ def kpi_moyennes(df):
   pic_matin = moyenne_heure.idxmax() if moyenne_heure.index[0] < 12 else "Non défini"
   pic_soir = moyenne_heure.idxmax() if moyenne_heure.index[0] >= 12 else "Non défini"
 
-  moyenne_annee = df.groupby("Jour")["Comptage horaire"].sum() / 365
+  moyenne_annee = df.groupby("Jour_num")["Comptage horaire"].sum() / 365
+  moyenne_annee["Jour"] = moyenne_annee["Jour_num"].map(jours_fr)
   jour_max = moyenne_annee.idxmax()
   jour_min = moyenne_annee.idxmin()
   
