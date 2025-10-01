@@ -5,7 +5,7 @@ def moyennes(df):
 
 
     moyenne_heure = df.groupby("Heure")["Comptage horaire"].mean().reset_index()
-    moyenne_jour = df.groupby("Jour")["Comptage horaire"].mean().reset_index().sort_values(by="jour_num",ascending=True)
+    moyenne_jour = df.groupby("Jour")["Comptage horaire"].mean().reset_index().sort_values(by="Jour_num",ascending=True)
 
 
     jours_par_mois = (
