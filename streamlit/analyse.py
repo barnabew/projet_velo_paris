@@ -50,9 +50,19 @@ def kpi_moyennes(df):
   vmin = int_heure["Velos"].min()
   vmax = int_heure["Velos"].max()
 
-  pic_matin = moyenne_heure.loc[moyenne_jour["Comptage horaire"].idxmax(), "Heure"] if moyenne_heure[moyenne_heure["Heure"] < 12] else "Non défini"
-  pic_soir = moyenne_heure.loc[moyenne_jour["Comptage horaire"].idxmin(), "Heure"] if moyenne_heure[moyenne_heure["Heure"] >= 12] else "Non défini"
+  matin = moyenne_heure[moyenne_heure["Heure"] < 12]
+  if not matin.empty:
+      pic_matin = matin.loc[matin["Comptage horaire"].idxmax(), "Heure"]
+  else:
+      pic_matin = "Non défini"
 
+  # Filtrer les heures de l'après-midi/soir (12-23)
+  soir = moyenne_heure[moyenne_heure["Heure"] >= 12]
+  if not soir.empty:
+      pic_soir = soir.loc[soir["Comptage horaire"].idxmax(), "Heure"]
+  else:
+      pic_soir = "Non défini"
+       
   jour_max = moyenne_jour.loc[moyenne_jour["Comptage horaire"].idxmax(), "Jour"]
   jour_min = moyenne_jour.loc[moyenne_jour["Comptage horaire"].idxmin(), "Jour"]
   
