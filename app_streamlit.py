@@ -43,13 +43,13 @@ onglets = st.tabs(titres_onglets)
 # --- Résumé Exécutif ---
 with onglets[0]:
     st.header("Résumé Exécutif")
-    col1, col2 = st.columns([1, 2])  # KPIs 1/3, texte 2/3
+    col1, col2 = st.columns([1, 1])  
     
     # KPIs à gauche
     with col2:
         cols = st.columns(3)
         for i, (title, value) in enumerate(kpis.items()):
-            col = cols[i % 3]   # choisir la bonne colonne (0,1,2)
+            col = cols[i % 3]   
             with col:
                 st.metric(title, value)
     
@@ -60,7 +60,7 @@ with onglets[0]:
 # --- Analyse par heure ---
 with onglets[1]:
     st.header("Moyenne des vélos par heure")
-    col1, col2 = st.columns([1, 2])  # texte 1/3, graphique 2/3
+    col1, col2 = st.columns([1, 1])  
     with col2:
         st.plotly_chart(plot_heure(moyenne_heure), use_container_width=True)
     with col1:
