@@ -14,4 +14,4 @@ Cette étude a permis d’identifier les jours et heures les plus chargés ainsi
 
 ## Organisation du projet
 
-Le notebook `Projet_velo.ipynb` contient toutes les explications détaillées sur le traitement des données, le calcul des indicateurs et les analyses réalisées. Le dossier `streamlit/` reprend le même code, adapté pour être utilisé dans une application web interactive. L’objectif est uniquement de proposer un rendu interactif, le code et les analyses restant identiques à ceux du notebook.
+Le notebook `Projet_velo.ipynb` contient toutes les explications détaillées sur le traitement des données, le calcul des indicateurs et les analyses réalisées. Le dossier `streamlit/` reprend le même code, mais il a été divisé en différentes parties afin de rendre le code plus lisible et modulaire. Cette séparation facilite la maintenance et l’extension de l’application, elle aurait également pu être appliquée directement dans le notebook, mais cela n'a pas été fait.
