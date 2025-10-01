@@ -53,8 +53,8 @@ def kpi_moyennes(df):
   pic_matin = moyenne_heure.idxmax() if moyenne_heure.index[0] < 12 else "Non défini"
   pic_soir = moyenne_heure.idxmax() if moyenne_heure.index[0] >= 12 else "Non défini"
 
-  jour_max = moyenne_jour.idxmax()
-  jour_min = moyenne_jour.idxmin()
+  jour_max = moyenne_jour.loc[moyenne_jour["Comptage horaire".idxmax(), "Jour"]
+  jour_min = moyenne_jour.loc[moyenne_jour["Comptage horaire".idxmin(), "Jour"]
   
   mois_max = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmax(), "Mois"]
   mois_min = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmin(), "Mois"]
