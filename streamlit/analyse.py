@@ -47,9 +47,6 @@ def moyennes(df):
 def kpi_moyennes(df):
   moyenne_heure, moyenne_jour, moyenne_mois, int_heure = moyennes(df)
   
-  vmin = int_heure["Velos"].min()
-  vmax = int_heure["Velos"].max()
-
   matin = moyenne_heure[moyenne_heure["Heure"] < 12]
   if not matin.empty:
       pic_matin = matin.loc[matin["Comptage horaire"].idxmax(), "Heure"]
@@ -69,8 +66,6 @@ def kpi_moyennes(df):
   mois_max = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmax(), "Mois"]
   mois_min = moyenne_mois.loc[moyenne_mois["Moyenne_jour"].idxmin(), "Mois"]
   
-  # Trafic moyen journalier
-  trafic_moyen = int(df["Comptage horaire"].sum() / 365)
   return {
              "Pic du matin": str(pic_matin) + "h",
              "Pic du soir": str(pic_soir) + "h",
