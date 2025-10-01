@@ -39,21 +39,26 @@ def chargement_nettoyage():
       
       df["Heure"] = df["Date et heure de comptage"].dt.hour + 1
       
-      df["Jour"] = df["Date et heure de comptage"].dt.day_name()
+      df["Jour_num"] = df["Date et heure de comptage"].dt.dayofweek
       
-      jours_fr = { 
-          "Monday": "Lundi",
-          "Tuesday": "Mardi", 
-          "Wednesday": "Mercredi", 
-          "Thursday": "Jeudi", 
-          "Friday": "Vendredi", 
-          "Saturday": "Samedi", 
-          "Sunday": "Dimanche" 
-      }
-      
-      df["Jour"] = df["Jour"].map(jours_fr)
+      df["Mois_num"] = df["Date et heure de comptage"].dt.month
 
-      df["Jour_num"] = df["Date et heure de comptage"].dt.day
+      jours_fr = {
+          0: "Lundi", 1: "Mardi", 2: "Mercredi",
+          3: "Jeudi", 4: "Vendredi", 5: "Samedi", 6: "Dimanche"
+      }
+
+      mois_fr = {
+          1: "Janvier",2: "Février",3: "Mars",4: "Avril",
+          5: "Mai",6: "Juin",7: "Juillet",8: "Août",
+          9: "Septembre",10: "Octobre",11: "Novembre",12: "Décembre"
+      }
+
+      jours_par_mois = (
+          df.groupby("Mois_num")["Date et heure de comptage"]
+            .apply(lambda x: x.dt.date.nunique())
+            .reset_index(name="Nb_jours")
+      )
       
       df[["lat", "lon"]] = df["Coordonnées géographiques"].str.split(",", expand=True).astype(float)
       
@@ -61,9 +66,5 @@ def chargement_nettoyage():
       
       df["Mois_num"] = df["Date et heure de comptage"].dt.month  # pour trier
       
-      jours_par_mois = (
-          df.groupby("Mois_num")["Date et heure de comptage"]
-            .apply(lambda x: x.dt.date.nunique())
-            .reset_index(name="Nb_jours")
-      )
+      
       return df        
