@@ -20,7 +20,6 @@ st.markdown("#### Données : Ville de Paris (Open Data - Année 2024)")
 
 # Fonction helper pour texte full-width avec padding
 def style_textes(txt):
-    txt_clean = txt.replace("</div>", "")
     st.markdown(
         f"""
         <div style="padding: 0 40px; text-align: justify;">
